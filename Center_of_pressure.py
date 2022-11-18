@@ -48,3 +48,12 @@ with st.columns([4,2,4])[1]:
 st.markdown("### Center of pressure")
 
 st.warning("Not calculated yet.")
+
+st.markdown("In 3D the center of pressure is a line, the equation of this line is: ??")
+
+st.markdown("If you set a plane to 0 (e.g. the symetry plane) you can get a point which correspond to your center of pressure.")
+
+plane = st.selectbox("Set a plane to 0:",("x","y","z"))
+
+st.markdown(f"With {plane} set to 0, your center of pressure is: ??")
+
