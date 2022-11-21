@@ -1,31 +1,32 @@
-from cop import calculate_minimal_moment, find_antother_point_on_copline
+from cop import calculate_minimal_moment, find_another_point_on_cop_line
 import streamlit as st
 import numpy as np
 
 
 st.title("Center of pressure 3D")
-st.markdown("Find the aerodynamic center of pressure by giving the total moment,"
-            "the total force and the point where it is applyied.")
+st.markdown("Find the aerodynamic center of pressure by giving the total moment, "
+            "the total force and the point where it is applied. Units are not defined, "
+            "but moment, force and length must be consistent with each other.")
 
 st.markdown("### Moment")
 
 col_Mx, col_My, col_Mz = st.columns(3)
 with col_Mx:
-    Mx = st.number_input("Mx",value=0.0,help="x componant of the total moment")
+    Mx = st.number_input("Mx",value=0.0,help="x component of the total moment")
 with col_My:
-    My = st.number_input("My",value=0.0,help="y componant of the total moment")
+    My = st.number_input("My",value=0.0,help="y component of the total moment")
 with col_Mz:
-    Mz = st.number_input("Mz",value=0.0,help="z componant of the total moment")
+    Mz = st.number_input("Mz",value=0.0,help="z component of the total moment")
 
 st.markdown("### Force")
 
 col_Fx, col_Fy, col_Fz = st.columns(3)
 with col_Fx:
-    Fx = st.number_input("Fx",value=0.0,help="x componant of the total force")
+    Fx = st.number_input("Fx",value=0.0,help="x component of the total force")
 with col_Fy:
-    Fy = st.number_input("Fy",value=0.0,help="y componant of the total force")
+    Fy = st.number_input("Fy",value=0.0,help="y component of the total force")
 with col_Fz:
-    Fz = st.number_input("Fz",value=0.0,help="z componant of the total force")
+    Fz = st.number_input("Fz",value=0.0,help="z component of the total force")
     
 st.markdown("### Point of reference")
 
@@ -39,7 +40,7 @@ with col_z:
     
 st.markdown("### Center of pressure")
 st.markdown("In 3D the center of pressure is a line")
-st.markdown("If you set a plane to 0 (e.g. the symetry plane) you can get a point which correspond to your center of pressure.")
+st.markdown("If you set a plane to 0 (e.g. the symmetry plane) you can get a point which correspond to your center of pressure.")
 
 F = np.array([Fx, Fy, Fz])
 Mref = np.array([Mx, My, Mz])
@@ -56,7 +57,7 @@ print(Pref)
 
 res = calculate_minimal_moment(F, Mref, Pref)
 print(res)
-point, msg = find_antother_point_on_copline(res, F, plane)
+point, msg = find_another_point_on_cop_line(res, F, plane)
 
 if msg:
     st.warning(msg)

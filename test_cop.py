@@ -2,7 +2,7 @@
 import numpy as np
 from pytest import approx
 
-from cop import calculate_minimal_moment, find_antother_point_on_copline
+from cop import calculate_minimal_moment, find_another_point_on_cop_line
 
 
 def test_cop():
@@ -19,17 +19,17 @@ def test_cop():
     assert Px[1] == 0
     assert Px[2] == 0
     
-    Pcop, msg = find_antother_point_on_copline(Px, F, "x")
+    Pcop, msg = find_another_point_on_cop_line(Px, F, "x")
     assert msg == "Center of pressure line is parallel to the x plane"
     
-    Pcop, msg = find_antother_point_on_copline(Px, F, "y")
+    Pcop, msg = find_another_point_on_cop_line(Px, F, "y")
     print(Pcop)
     assert msg == ""
     assert Pcop[0] == approx(1.49995, 1e-5)
     assert Pcop[1] == 0
     assert Pcop[2] == 0
     
-    Pcop, msg = find_antother_point_on_copline(Px, F, "z")
+    Pcop, msg = find_another_point_on_cop_line(Px, F, "z")
     print(Pcop)
     assert msg == ""
     assert Pcop[0] == approx(1.49995, 1e-5)
@@ -43,7 +43,7 @@ def test_cop():
     Pref = np.array([0., 0., 0.])
     
     Px = calculate_minimal_moment(F, Mref, Pref)
-    Pcop, msg = find_antother_point_on_copline(Px, F, "z")
+    Pcop, msg = find_another_point_on_cop_line(Px, F, "z")
 
     assert msg == ""
     assert Pcop[0] == approx(34.7967, 1e-5)

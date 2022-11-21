@@ -43,7 +43,7 @@ def calculate_minimal_moment(F, Mref, Pref):
 
     return Px
 
-def find_antother_point_on_copline(Pcop, F, plane):
+def find_another_point_on_cop_line(Pcop, F, plane):
     """Find point on cop line crossing a plane
 
     Args:
